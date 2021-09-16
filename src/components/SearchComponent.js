@@ -20,6 +20,7 @@ const Input = styled.input`
 
 const Button = styled.button`
   color: gray;
+  font-size: 25px;
   height: 45px;
   width: 60px;
   outline: none;
@@ -42,7 +43,7 @@ const SearchComponent = (props) => {
 
   return (
     <Container onSubmit={onSubmit}>
-      <Input onChange={onChange}/>
+      <Input onChange={onChange} placeholder="Search Anime"/>
       <Button type='submit'>Search</Button>
     </Container>
   )
