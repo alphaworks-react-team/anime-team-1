@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
-import { CardContainer } from '../fragments/Container'
+import { Container } from '../fragments/Container'
 import Card from './Card'
 
 const HomeListComponent = () => {
@@ -26,7 +26,7 @@ const HomeListComponent = () => {
   }, [])
 
   return (
-    <CardContainer>
+    <Container>
       {trending.map((card, index) => (
         <Card key={index}
           img={card.attributes.posterImage.small}
@@ -34,7 +34,7 @@ const HomeListComponent = () => {
           >
         </Card>
       ))}
-    </CardContainer>
+    </Container>
   )
 }
 

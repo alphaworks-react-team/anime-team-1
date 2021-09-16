@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
 
-const Container = styled.form`
+const SearchContainer = styled.form`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -42,10 +42,10 @@ const SearchComponent = (props) => {
   }
 
   return (
-    <Container onSubmit={onSubmit}>
+    <SearchContainer onSubmit={onSubmit}>
       <Input onChange={onChange} placeholder="Search Anime"/>
       <Button type='submit'>Search</Button>
-    </Container>
+    </SearchContainer>
   )
 }
 
