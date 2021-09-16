@@ -1,6 +1,7 @@
 import './App.css';
 import axios from 'axios';
 import SearchComponent from './components/SearchComponent';
+import Home from './Pages/Home';
 
 function App() {
   const searchAnime = (searchTerm) => {
@@ -20,6 +21,7 @@ function App() {
   return (
     <div className="App">
       <SearchComponent searchAnime={searchAnime}/>
+      <Home/>
     </div>
   );
 }
