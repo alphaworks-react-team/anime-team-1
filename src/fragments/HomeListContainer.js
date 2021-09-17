@@ -7,11 +7,3 @@ export const HomeListContainer = styled.div`
   flex-flow: row nowrap;
   width: 100%;
 `;
-
-export const SearchCardContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-flow: row wrap;
-  width: 100%;
-`;

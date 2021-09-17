@@ -11,19 +11,19 @@ const NavContainer = styled.div`
   top: 0;
   position: sticky;
   z-index: 2;
+  background: #3d3c72;
 `
 
 const NavText = styled.div`
-  color: #3d3c72;
+  color: white;
   font-size: 1.5rem;
   font-weight: bolder;
   cursor: pointer;
 
   &:hover {
-    color: #f16246;
+    color: #FFBF00;
   }
 `
-
 
 const Nav = () => {
   return (

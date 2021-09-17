@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
 import { HomeListContainer } from "../fragments/HomeListContainer";
 import { getTrendingAnime, getPopular, getRanked } from "../utils/fetches";
-import Card from "./Card";
+import HomeCard from "./HomeCard";
 
 const HomeListComponent = () => {
   const [trending, setTrending] = useState([]);
@@ -33,29 +32,38 @@ const HomeListComponent = () => {
     <div>
       <HomeListContainer>
         {trending.map((card, index) => (
-          <Card
-            key={index}
+          <HomeCard key={index}
             img={card.attributes.posterImage.small}
             title={card.attributes.titles.en}
-          ></Card>
+            // ageRating={card.attributes.ageRating}
+            // averageRating={card.attributes.averageRating}
+            // synopsis={card.attributes.synopsis}
+          >
+          </HomeCard>
         ))}
       </HomeListContainer>
       <HomeListContainer>
         {popular.map((card, index) => (
-          <Card
-            key={index}
+          <HomeCard key={index}
             img={card.attributes.posterImage.small}
             title={card.attributes.titles.en}
-          ></Card>
+            // ageRating={card.attributes.ageRating}
+            // averageRating={card.attributes.averageRating}
+            // synopsis={card.attributes.synopsis}
+          >
+          </HomeCard>
         ))}
       </HomeListContainer>
       <HomeListContainer>
         {highestRanked.map((card, index) => (
-          <Card
-            key={index}
+          <HomeCard key={index}
             img={card.attributes.posterImage.small}
             title={card.attributes.titles.en}
-          ></Card>
+            // ageRating={card.attributes.ageRating}
+            // averageRating={card.attributes.averageRating}
+            // synopsis={card.attributes.synopsis}
+          >
+          </HomeCard>
         ))}
       </HomeListContainer>
     </div>

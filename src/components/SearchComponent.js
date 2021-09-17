@@ -5,10 +5,9 @@ const SearchContainer = styled.form`
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 0;
-  margin-bottom: 1.5rem;
+  padding: 1.5rem 0 1.5rem 0;
   position: sticky;
-  top: 13vh;
+  top: 10vh;
   background: white;
 `
 

@@ -7,3 +7,4 @@ export const SearchCardContainer = styled.div`
   flex-flow: column;
   width: 100%;
 `;
+
