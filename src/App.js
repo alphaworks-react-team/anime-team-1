@@ -1,10 +1,14 @@
 import "./App.css";
 import { useState } from "react";
 import axios from "axios";
+import { Switch, Route } from "react-router";
 import Nav from "./components/Nav";
 import SearchComponent from "./components/SearchComponent";
 import Home from "./Pages/Home";
 import Search from "./Pages/Search";
+import Trending from "./Pages/Trending";
+
+import routes from './config/routes';
 
 function App() {
   const [searchContent, setSearchContent] = useState([]);
@@ -31,7 +35,13 @@ function App() {
       <Nav />
       <SearchComponent searchAnime={searchAnime} />
       <Search searchContent={searchContent} />
+      <div>
+        {routes}
+      </div>
+      
+      {/* 
       <Home />
+      <Trending/> */}
     </div>
   );
 }

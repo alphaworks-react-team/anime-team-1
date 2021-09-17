@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 import styled from 'styled-components'
 
 const NavContainer = styled.div`
@@ -28,8 +29,8 @@ const NavText = styled.div`
 const Nav = () => {
   return (
     <NavContainer>
-      <NavText>Home</NavText>
-      <NavText>Trending</NavText>
+      <Link to={'/'}><NavText>Home</NavText></Link>
+      <Link to={'/trending'}><NavText>Trending</NavText></Link>
       <NavText>Categories</NavText>
     </NavContainer>
   )
