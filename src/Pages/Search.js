@@ -1,22 +1,20 @@
-import React from 'react'
-import Card from '../components/Card'
-import { Container } from '../fragments/Container'
+import React from "react";
+import Card from "../components/Card";
+import { SearchCardContainer } from "../fragments/SearchCardContainer";
 
 const Search = ({ searchContent }) => {
   return (
-    <Container>
+    <SearchCardContainer>
       {searchContent.map((card, index) => (
-        <Card key={index}
-        img={card.attributes.posterImage.small}
-        title={card.attributes.titles.en}
-        ageRating={card.attributes.ageRating}
-        averageRating={card.attributes.averageRating}
-        synopsis={card.attributes.synopsis}
-        >
-      </Card>
+        <Card
+          key={index}
+          img={card.attributes.posterImage.small}
+          title={card.attributes.titles.en}
+          description={card.attributes.description}
+        ></Card>
       ))}
-    </Container>
-  )
-}
+    </SearchCardContainer>
+  );
+};
 
-export default Search
+export default Search;
