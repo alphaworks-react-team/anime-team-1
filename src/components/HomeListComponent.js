@@ -20,7 +20,7 @@ const HomeListComponent = () => {
       })
       .catch((err) => {console.log(err)})
   }
-  console.log(trending)
+
   useEffect(() => {
     searchTrendingAnime()
   }, [])
