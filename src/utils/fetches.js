@@ -21,7 +21,7 @@ export const getTrendingAnime = async () => {
 export const getPopular = async () => {
   try {
     const popularCall = await axios.get(
-      "https://kitsu.io/api/edge/anime?sort=popularityRank",
+      "https://kitsu.io/api/edge/anime?sort=popularityRank&page[limit]=5",
       {
         headers: {
           Accept: "application/vnd.api+json",
@@ -39,7 +39,7 @@ export const getPopular = async () => {
 export const getRanked = async () => {
   try {
     const rankedCall = await axios.get(
-      "https://kitsu.io/api/edge/anime?sort=ratingRank",
+      "https://kitsu.io/api/edge/anime?sort=ratingRank&page[limit]=5",
       {
         headers: {
           Accept: "application/vnd.api+json",
