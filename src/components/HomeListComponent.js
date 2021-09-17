@@ -1,7 +1,11 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
 import { HomeListContainer } from "../fragments/HomeListContainer";
-import { getTrendingAnime, getPopular, getRanked } from "../utils/fetches";
+import {
+  getTrendingAnime,
+  getPopular,
+  getRanked,
+  getCategories,
+} from "../utils/fetches";
 import Card from "./Card";
 
 const HomeListComponent = () => {
@@ -12,14 +16,11 @@ const HomeListComponent = () => {
   const fetchAndSetLists = async () => {
     try {
       const trendingRes = await getTrendingAnime();
-      const trendingData = await trendingRes;
-      setTrending(trendingData);
+      setTrending(trendingRes);
       const popularRes = await getPopular();
-      const popularData = await popularRes;
-      setPopular(popularData);
+      setPopular(popularRes);
       const rankedRes = await getRanked();
-      const rankedData = await rankedRes;
-      setHighestRanked(rankedData);
+      setHighestRanked(rankedRes);
     } catch (err) {
       console.log(err);
     }
@@ -27,6 +28,7 @@ const HomeListComponent = () => {
 
   useEffect(() => {
     fetchAndSetLists();
+    getCategories();
   }, []);
 
   return (

@@ -49,3 +49,23 @@ export const getRanked = async () => {
     console.log(err);
   }
 };
+
+export const getCategories = async () => {
+  try {
+    const categoriesCall = await axios.get(
+      "https://kitsu.io/api/edge/categories?page[limit]=229",
+      {
+        headers: headers,
+      }
+    );
+    console.log("categories", categoriesCall.data.data);
+    const catArray = categoriesCall.data.data;
+    const mainCatArray = catArray.filter((cat) => {
+      return cat.attributes.childCount > 3;
+    });
+    console.log(mainCatArray);
+    return mainCatArray;
+  } catch (err) {
+    console.log(err);
+  }
+};
