@@ -9,7 +9,9 @@ const Search = ({ searchContent }) => {
         <Card key={index}
         img={card.attributes.posterImage.small}
         title={card.attributes.titles.en}
-        description={card.attributes.description}
+        ageRating={card.attributes.ageRating}
+        averageRating={card.attributes.averageRating}
+        synopsis={card.attributes.synopsis}
         >
       </Card>
       ))}

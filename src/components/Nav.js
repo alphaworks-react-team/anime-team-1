@@ -18,6 +18,10 @@ const NavText = styled.div`
   font-size: 1.5rem;
   font-weight: bolder;
   cursor: pointer;
+
+  &:hover {
+    color: #f16246;
+  }
 `
 
 

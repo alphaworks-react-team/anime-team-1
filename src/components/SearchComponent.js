@@ -5,12 +5,14 @@ const SearchContainer = styled.form`
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 1.5rem 0 1.5rem 0;
+  margin: 0;
+  margin-bottom: 1.5rem;
+  position: sticky;
+  top: 13vh;
+  background: white;
 `
 
 const Input = styled.input`
-  margin: 0;
-  padding: 0;
   height: 3.5rem;
   width: 40%;
   outline: none;

@@ -31,6 +31,9 @@ const HomeListComponent = () => {
         <Card key={index}
           img={card.attributes.posterImage.small}
           title={card.attributes.titles.en}
+          ageRating={card.attributes.ageRating}
+          averageRating={card.attributes.averageRating}
+          synopsis={card.attributes.synopsis}
           >
         </Card>
       ))}
