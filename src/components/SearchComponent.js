@@ -5,27 +5,28 @@ const SearchContainer = styled.form`
   display: flex;
   justify-content: center;
   align-items: center;
+  margin: 1.5rem 0 1.5rem 0;
 `
 
 const Input = styled.input`
   margin: 0;
   padding: 0;
-  height: 45px;
-  width: 300px;
+  height: 3.5rem;
+  width: 40%;
   outline: none;
   border: none;
+  border-bottom: 2px solid black;
   background: none;
   font-size: 25px;
 `
 
 const Button = styled.button`
-  color: gray;
+  color: white;
   font-size: 25px;
-  height: 45px;
-  width: 60px;
+  height: 3.5rem;
   outline: none;
   border: none;
-  background: none;
+  background: #f16246;
   cursor: pointer;
 `
 

@@ -19,6 +19,7 @@ function App() {
       })
       .then((res) => {
         setSearchContent(res.data.data);
+        console.log(res.data.data)
       })
       .catch((err) => {console.log(err)})
   }
