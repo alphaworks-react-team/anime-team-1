@@ -9,26 +9,24 @@ const HomeListComponent = () => {
   const [popular, setPopular] = useState([]);
   const [highestRanked, setHighestRanked] = useState([]);
 
-  const fetchAndSetTrending = async () => {
-    const res = await getTrendingAnime();
-    const data = await res;
-    setTrending(data);
-  };
-  const fetchAndSetPopular = async () => {
-    const res = await getPopular();
-    const data = await res;
-    setPopular(data);
-  };
-  const fetchAndSetRanked = async () => {
-    const res = await getRanked();
-    const data = await res;
-    setHighestRanked(data);
+  const fetchAndSetLists = async () => {
+    try {
+      const trendingRes = await getTrendingAnime();
+      const trendingData = await trendingRes;
+      setTrending(trendingData);
+      const popularRes = await getPopular();
+      const popularData = await popularRes;
+      setPopular(popularData);
+      const rankedRes = await getRanked();
+      const rankedData = await rankedRes;
+      setHighestRanked(rankedData);
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   useEffect(() => {
-    fetchAndSetTrending();
-    fetchAndSetPopular();
-    fetchAndSetRanked();
+    fetchAndSetLists();
   }, []);
 
   return (

@@ -1,14 +1,16 @@
 import axios from "axios";
 
+const headers = {
+  Accept: "application/vnd.api+json",
+  "Content-Type": "application/vnd.api+json",
+};
+
 export const getTrendingAnime = async () => {
   try {
     const trendingCall = await axios.get(
       "https://kitsu.io/api/edge/trending/anime?[limit]=5",
       {
-        headers: {
-          Accept: "application/vnd.api+json",
-          "Content-Type": "application/vnd.api+json",
-        },
+        headers: headers,
       }
     );
     console.log(trendingCall.data.data);
@@ -23,10 +25,7 @@ export const getPopular = async () => {
     const popularCall = await axios.get(
       "https://kitsu.io/api/edge/anime?sort=popularityRank&page[limit]=5",
       {
-        headers: {
-          Accept: "application/vnd.api+json",
-          "Content-Type": "application/vnd.api+json",
-        },
+        headers: headers,
       }
     );
     console.log("popular", popularCall.data.data);
@@ -41,10 +40,7 @@ export const getRanked = async () => {
     const rankedCall = await axios.get(
       "https://kitsu.io/api/edge/anime?sort=ratingRank&page[limit]=5",
       {
-        headers: {
-          Accept: "application/vnd.api+json",
-          "Content-Type": "application/vnd.api+json",
-        },
+        headers: headers,
       }
     );
     console.log("ranked", rankedCall.data.data);
