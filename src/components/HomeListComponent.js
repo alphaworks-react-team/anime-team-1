@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { Container } from "../fragments/Container";
+import { HomeListContainer } from "../fragments/HomeListContainer";
 import { getTrendingAnime, getPopular, getRanked } from "../utils/fetches";
 import Card from "./Card";
 
@@ -31,7 +31,7 @@ const HomeListComponent = () => {
 
   return (
     <div>
-      <Container>
+      <HomeListContainer>
         {trending.map((card, index) => (
           <Card
             key={index}
@@ -39,8 +39,8 @@ const HomeListComponent = () => {
             title={card.attributes.titles.en}
           ></Card>
         ))}
-      </Container>
-      <Container>
+      </HomeListContainer>
+      <HomeListContainer>
         {popular.map((card, index) => (
           <Card
             key={index}
@@ -48,8 +48,8 @@ const HomeListComponent = () => {
             title={card.attributes.titles.en}
           ></Card>
         ))}
-      </Container>
-      <Container>
+      </HomeListContainer>
+      <HomeListContainer>
         {highestRanked.map((card, index) => (
           <Card
             key={index}
@@ -57,7 +57,7 @@ const HomeListComponent = () => {
             title={card.attributes.titles.en}
           ></Card>
         ))}
-      </Container>
+      </HomeListContainer>
     </div>
   );
 };
