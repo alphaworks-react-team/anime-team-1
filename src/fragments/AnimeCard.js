@@ -12,6 +12,11 @@ const AnimeCard = styled.div`
     background: #3d3c72;
     color: white;
   }
+
+  @media (max-width: 768px) {
+    align-items: center;
+    flex-direction: column;
+  }
 `
 
 export default AnimeCard
