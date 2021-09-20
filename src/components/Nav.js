@@ -3,6 +3,7 @@ import styled from "styled-components";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import { getCategories } from "../utils/fetches";
+import { Link } from "react-router-dom";
 
 const NavContainer = styled.div`
   background: white;
@@ -14,13 +15,18 @@ const NavContainer = styled.div`
   top: 0;
   position: sticky;
   z-index: 2;
+  background: #3d3c72;
 `;
 
 const NavText = styled.div`
-  color: #3d3c72;
+  color: white;
   font-size: 1.5rem;
   font-weight: bolder;
   cursor: pointer;
+
+  &:hover {
+    color: #ffbf00;
+  }
 `;
 
 const Nav = () => {
@@ -48,8 +54,12 @@ const Nav = () => {
 
   return (
     <NavContainer>
-      <NavText>Home</NavText>
-      <NavText>Trending</NavText>
+      <Link to={"/"}>
+        <NavText>Home</NavText>
+      </Link>
+      <Link to={"/trending"}>
+        <NavText>Trending</NavText>
+      </Link>
       <NavText
         id="basic-button"
         aria-controls="basic-menu"

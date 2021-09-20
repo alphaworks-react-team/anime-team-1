@@ -4,6 +4,7 @@ export const SearchCardContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-flow: row wrap;
+  flex-flow: column;
   width: 100%;
 `;
+
