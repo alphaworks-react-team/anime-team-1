@@ -8,6 +8,9 @@ import SearchComponent from "./components/SearchComponent";
 import Home from "./Pages/Home";
 import Search from "./Pages/Search";
 import Trending from "./Pages/Trending";
+import Category from "./Pages/Category";
+
+import { CategoryContextProvider } from "./Context/CategoryContext";
 
 // import routes from './config/routes';
 
@@ -24,7 +27,6 @@ function App() {
       })
       .then((res) => {
         setSearchContent(res.data.data);
-        console.log(res.data.data);
       })
       .catch((err) => {
         console.log(err);
@@ -33,23 +35,25 @@ function App() {
 
   return (
     <div className="App">
-      <Nav />
-      <SearchComponent searchAnime={searchAnime} />
-      <Switch>
-
-        <Route exact path='/'>
-          <Home/>
-        </Route>
-
-        <Route path='/search'>
-          <Search searchContent={searchContent} />
-        </Route>
-
-        <Route exact path='/trending'>
-          <Trending/>
-        </Route>
-
-      </Switch>
+      <CategoryContextProvider>
+        <Nav />
+        <SearchComponent searchAnime={searchAnime} />
+        <Switch>
+          <Route exact path="/">
+            <Home />
+          </Route>
+          <Route path="/search">
+            <Search searchContent={searchContent} />
+          </Route>
+          <Route exact path="/trending">
+            <Trending />
+          </Route>
+          <Route exact path="/categories">
+            <Search searchContent={searchContent} />
+            <Category />
+          </Route>
+        </Switch>
+      </CategoryContextProvider>
     </div>
   );
 }

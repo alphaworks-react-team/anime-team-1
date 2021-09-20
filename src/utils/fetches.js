@@ -13,7 +13,6 @@ export const getTrendingAnime = async () => {
         headers: headers,
       }
     );
-    console.log(trendingCall.data.data);
     return trendingCall.data.data;
   } catch (err) {
     console.log(err);
@@ -28,7 +27,6 @@ export const getPopular = async () => {
         headers: headers,
       }
     );
-    console.log("popular", popularCall.data.data);
     return popularCall.data.data;
   } catch (err) {
     console.log(err);
@@ -43,8 +41,39 @@ export const getRanked = async () => {
         headers: headers,
       }
     );
-    console.log("ranked", rankedCall.data.data);
     return rankedCall.data.data;
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+export const getCategories = async () => {
+  try {
+    const categoriesCall = await axios.get(
+      "https://kitsu.io/api/edge/categories?page[limit]=229",
+      {
+        headers: headers,
+      }
+    );
+    const catArray = categoriesCall.data.data;
+    const mainCatArray = catArray.filter((cat) => {
+      return cat.attributes.childCount > 3;
+    });
+    return mainCatArray;
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+export const getCategoryAnime = async (category) => {
+  try {
+    const getAnimeByCat = await axios.get(
+      `https://kitsu.io/api/edge/anime?filter[categories]=${category}`,
+      {
+        headers: headers,
+      }
+    );
+    return getAnimeByCat.data.data;
   } catch (err) {
     console.log(err);
   }

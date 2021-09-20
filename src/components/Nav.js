@@ -1,6 +1,10 @@
-import React from 'react'
-import { Link } from 'react-router-dom';
-import styled from 'styled-components'
+import React, { useState, useContext } from "react";
+import styled from "styled-components";
+import Menu from "@mui/material/Menu";
+import MenuItem from "@mui/material/MenuItem";
+import { Link } from "react-router-dom";
+import { CategoryContext } from "../Context/CategoryContext";
+import { useHistory } from "react-router";
 
 const NavContainer = styled.div`
   background: white;
@@ -13,7 +17,7 @@ const NavContainer = styled.div`
   position: sticky;
   z-index: 2;
   background: #3d3c72;
-`
+`;
 
 const NavText = styled.div`
   color: white;
@@ -22,18 +26,62 @@ const NavText = styled.div`
   cursor: pointer;
 
   &:hover {
-    color: #FFBF00;
+    color: #ffbf00;
   }
-`
+`;
 
 const Nav = () => {
+  const [anchorEl, setAnchorEl] = useState(null);
+  const { categories, setSelectedCategory } = useContext(CategoryContext);
+  const history = useHistory();
+
+  const open = Boolean(anchorEl);
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleCategorySelect = (cat) => {
+    setSelectedCategory(cat.attributes.title);
+    setAnchorEl(null);
+    history.push("/categories");
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
   return (
     <NavContainer>
-      <Link to={'/'}><NavText>Home</NavText></Link>
-      <Link to={'/trending'}><NavText>Trending</NavText></Link>
-      <NavText>Categories</NavText>
+      <Link to={"/"}>
+        <NavText>Home</NavText>
+      </Link>
+      <Link to={"/trending"}>
+        <NavText>Trending</NavText>
+      </Link>
+      <NavText
+        id="basic-button"
+        aria-controls="basic-menu"
+        aria-haspopup="true"
+        aria-expanded={open ? "true" : undefined}
+        onClick={handleClick}
+      >
+        Categories
+      </NavText>
+      <Menu
+        id="basic-menu"
+        anchorEl={anchorEl}
+        open={open}
+        onClose={handleClose}
+        MenuListProps={{
+          "aria-labelledby": "basic-button",
+        }}
+      >
+        {categories.map((cat, index) => (
+          <MenuItem key={index} onClick={() => handleCategorySelect(cat)}>
+            {cat.attributes.title}
+          </MenuItem>
+        ))}
+      </Menu>
     </NavContainer>
-  )
-}
+  );
+};
 
-export default Nav
+export default Nav;

@@ -1,6 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { HomeListContainer } from "../fragments/HomeListContainer";
-import { getTrendingAnime, getPopular, getRanked } from "../utils/fetches";
+import {
+  getTrendingAnime,
+  getPopular,
+  getRanked,
+  getCategories,
+} from "../utils/fetches";
 import HomeCard from "./HomeCard";
 
 const HomeListComponent = () => {
@@ -11,14 +16,11 @@ const HomeListComponent = () => {
   const fetchAndSetLists = async () => {
     try {
       const trendingRes = await getTrendingAnime();
-      const trendingData = await trendingRes;
-      setTrending(trendingData);
+      setTrending(trendingRes);
       const popularRes = await getPopular();
-      const popularData = await popularRes;
-      setPopular(popularData);
+      setPopular(popularRes);
       const rankedRes = await getRanked();
-      const rankedData = await rankedRes;
-      setHighestRanked(rankedData);
+      setHighestRanked(rankedRes);
     } catch (err) {
       console.log(err);
     }
@@ -26,6 +28,7 @@ const HomeListComponent = () => {
 
   useEffect(() => {
     fetchAndSetLists();
+    getCategories();
   }, []);
 
   return (
@@ -33,42 +36,42 @@ const HomeListComponent = () => {
       <h1>Trending Shows</h1>
       <HomeListContainer>
         {trending.map((card, index) => (
-          <HomeCard key={index}
+          <HomeCard
+            key={index}
             img={card.attributes.posterImage.small}
             title={card.attributes.titles.en}
             // ageRating={card.attributes.ageRating}
             // averageRating={card.attributes.averageRating}
             // synopsis={card.attributes.synopsis}
-          >
-          </HomeCard>
+          ></HomeCard>
         ))}
       </HomeListContainer>
-      <hr/>
+      <hr />
       <h1>Popular Shows</h1>
       <HomeListContainer>
         {popular.map((card, index) => (
-          <HomeCard key={index}
+          <HomeCard
+            key={index}
             img={card.attributes.posterImage.small}
             title={card.attributes.titles.en}
             // ageRating={card.attributes.ageRating}
             // averageRating={card.attributes.averageRating}
             // synopsis={card.attributes.synopsis}
-          >
-          </HomeCard>
+          ></HomeCard>
         ))}
       </HomeListContainer>
-      <hr/>
+      <hr />
       <h1>Highest Rated</h1>
       <HomeListContainer>
         {highestRanked.map((card, index) => (
-          <HomeCard key={index}
+          <HomeCard
+            key={index}
             img={card.attributes.posterImage.small}
             title={card.attributes.titles.en}
             // ageRating={card.attributes.ageRating}
             // averageRating={card.attributes.averageRating}
             // synopsis={card.attributes.synopsis}
-          >
-          </HomeCard>
+          ></HomeCard>
         ))}
       </HomeListContainer>
     </div>
