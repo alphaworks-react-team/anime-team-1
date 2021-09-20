@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 import styled from 'styled-components'
 
 const NavContainer = styled.div`
@@ -11,21 +12,25 @@ const NavContainer = styled.div`
   top: 0;
   position: sticky;
   z-index: 2;
+  background: #3d3c72;
 `
 
 const NavText = styled.div`
-  color: #3d3c72;
+  color: white;
   font-size: 1.5rem;
   font-weight: bolder;
   cursor: pointer;
-`
 
+  &:hover {
+    color: #FFBF00;
+  }
+`
 
 const Nav = () => {
   return (
     <NavContainer>
-      <NavText>Home</NavText>
-      <NavText>Trending</NavText>
+      <Link to={'/'}><NavText>Home</NavText></Link>
+      <Link to={'/trending'}><NavText>Trending</NavText></Link>
       <NavText>Categories</NavText>
     </NavContainer>
   )
