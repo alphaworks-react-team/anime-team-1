@@ -30,7 +30,7 @@ const HomeListComponent = () => {
 
   return (
     <div>
-      <h2>Trending Shows</h2>
+      <h1>Trending Shows</h1>
       <HomeListContainer>
         {trending.map((card, index) => (
           <HomeCard key={index}
@@ -44,7 +44,7 @@ const HomeListComponent = () => {
         ))}
       </HomeListContainer>
       <hr/>
-      <h2>Popular Shows</h2>
+      <h1>Popular Shows</h1>
       <HomeListContainer>
         {popular.map((card, index) => (
           <HomeCard key={index}
@@ -58,7 +58,7 @@ const HomeListComponent = () => {
         ))}
       </HomeListContainer>
       <hr/>
-      <h2>Highest Rated</h2>
+      <h1>Highest Rated</h1>
       <HomeListContainer>
         {highestRanked.map((card, index) => (
           <HomeCard key={index}
