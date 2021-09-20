@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useContext } from "react";
 import styled from "styled-components";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
-import { getCategories } from "../utils/fetches";
 import { Link } from "react-router-dom";
+import { CategoryContext } from "../Context/CategoryContext";
+import { useHistory } from "react-router";
 
 const NavContainer = styled.div`
   background: white;
@@ -31,26 +32,21 @@ const NavText = styled.div`
 
 const Nav = () => {
   const [anchorEl, setAnchorEl] = useState(null);
-  const [categories, setCategories] = useState([]);
+  const { categories, setSelectedCategory } = useContext(CategoryContext);
+  const history = useHistory();
 
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
+  const handleCategorySelect = (cat) => {
+    setSelectedCategory(cat.attributes.title);
+    setAnchorEl(null);
+    history.push("/categories");
+  };
   const handleClose = () => {
     setAnchorEl(null);
   };
-
-  const fetchAndSetCategories = async () => {
-    const getCat = await getCategories();
-    setCategories(getCat);
-    console.log("cats", getCat);
-    console.log("state", categories);
-  };
-
-  useEffect(() => {
-    fetchAndSetCategories();
-  }, []);
 
   return (
     <NavContainer>
@@ -79,11 +75,9 @@ const Nav = () => {
         }}
       >
         {categories.map((cat, index) => (
-          <>
-            <MenuItem key={index} onClick={handleClose}>
-              {cat.attributes.title}
-            </MenuItem>
-          </>
+          <MenuItem key={index} onClick={() => handleCategorySelect(cat)}>
+            {cat.attributes.title}
+          </MenuItem>
         ))}
       </Menu>
     </NavContainer>
