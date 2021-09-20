@@ -29,8 +29,8 @@ const CategoryCard = (props) => {
         <h3>{props.title}</h3>
       </CategoryCardTitle>
       <CategoryCardFooter>
-        <p>{props.ageRating}</p>
-        <p>{props.averageRating}</p>
+        <p>Rated: {props.ageRating}</p>
+        <p>Average Rating: {props.averageRating}%</p>
       </CategoryCardFooter>
     </StyledCategoryCard>
   );

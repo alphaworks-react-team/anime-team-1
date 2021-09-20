@@ -68,7 +68,7 @@ export const getCategories = async () => {
 export const getCategoryAnime = async (category) => {
   try {
     const getAnimeByCat = await axios.get(
-      `https://kitsu.io/api/edge/anime?filter[categories]=${category}`,
+      `https://kitsu.io/api/edge/anime?filter[categories]=${category}&page[limit]=20&page[offset]=0`,
       {
         headers: headers,
       }

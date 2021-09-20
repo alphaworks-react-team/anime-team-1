@@ -17,21 +17,24 @@ const CategorySearch = () => {
   }, [selectedCategory]);
 
   return (
-    <CategoryCardContainer>
-      {categoryContent.map((card, index) => (
-        <CategoryCard
-          key={index}
-          img={card.attributes.posterImage.medium}
-          title={
-            card.attributes.titles.en
-              ? card.attributes.titles.en
-              : card.attributes.titles.en_jp
-          }
-          ageRating={card.attributes.ageRating}
-          averageRating={card.attributes.averageRating}
-        ></CategoryCard>
-      ))}
-    </CategoryCardContainer>
+    <div>
+      <h2>{selectedCategory} Anime</h2>
+      <CategoryCardContainer>
+        {categoryContent.map((card, index) => (
+          <CategoryCard
+            key={index}
+            img={card.attributes.posterImage.original}
+            title={
+              card.attributes.titles.en
+                ? card.attributes.titles.en
+                : card.attributes.titles.en_jp
+            }
+            ageRating={card.attributes.ageRating}
+            averageRating={card.attributes.averageRating}
+          ></CategoryCard>
+        ))}
+      </CategoryCardContainer>
+    </div>
   );
 };
 
