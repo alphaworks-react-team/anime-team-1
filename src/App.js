@@ -36,15 +36,19 @@ function App() {
       <Nav />
       <SearchComponent searchAnime={searchAnime} />
       <Switch>
+
         <Route exact path='/'>
-          {/* conditional rendering */}
-          <Search searchContent={searchContent} />
-          <Home/>
+          {/* <Home/> */}
         </Route>
-        <Route exact path='/trending'>
+
+        <Route path='/search'>
           <Search searchContent={searchContent} />
+        </Route>
+
+        <Route exact path='/trending'>
           <Trending/>
         </Route>
+
       </Switch>
     </div>
   );
