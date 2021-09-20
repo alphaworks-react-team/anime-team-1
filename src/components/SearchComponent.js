@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
+import { useHistory } from 'react-router-dom'
 
 const SearchContainer = styled.form`
   display: flex;
@@ -43,10 +44,12 @@ const SearchComponent = (props) => {
     props.searchAnime(searchTerm)
   }
 
+  let history = useHistory();
+
   return (
     <SearchContainer onSubmit={onSubmit}>
       <Input onChange={onChange} placeholder="Search Anime"/>
-      <Button type='submit'>Search</Button>
+      <Button type='submit' onClick={() => { history.push('/search')}}>Search</Button>
     </SearchContainer>
   )
 }
