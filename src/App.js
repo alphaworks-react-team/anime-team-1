@@ -9,6 +9,7 @@ import Home from "./Pages/Home";
 import Search from "./Pages/Search";
 import Trending from "./Pages/Trending";
 import Category from "./Pages/Category";
+import Anime from "./Pages/Anime";
 
 import { CategoryContextProvider } from "./Context/CategoryContext";
 
@@ -50,6 +51,10 @@ function App() {
           </Route>
           <Route path="/categories">
             <Category />
+          </Route>
+
+          <Route path="/anime">
+            <Anime />
           </Route>
         </Switch>
       </CategoryContextProvider>
