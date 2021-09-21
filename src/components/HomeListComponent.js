@@ -40,6 +40,7 @@ const HomeListComponent = () => {
             key={index}
             img={card.attributes.posterImage.small}
             title={card.attributes.titles.en}
+            id={card.id}
             // ageRating={card.attributes.ageRating}
             // averageRating={card.attributes.averageRating}
             // synopsis={card.attributes.synopsis}
@@ -54,6 +55,7 @@ const HomeListComponent = () => {
             key={index}
             img={card.attributes.posterImage.small}
             title={card.attributes.titles.en}
+            id={card.id}
             // ageRating={card.attributes.ageRating}
             // averageRating={card.attributes.averageRating}
             // synopsis={card.attributes.synopsis}
@@ -68,6 +70,7 @@ const HomeListComponent = () => {
             key={index}
             img={card.attributes.posterImage.small}
             title={card.attributes.titles.en}
+            id={card.id}
             // ageRating={card.attributes.ageRating}
             // averageRating={card.attributes.averageRating}
             // synopsis={card.attributes.synopsis}
