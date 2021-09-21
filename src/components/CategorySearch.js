@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useContext } from "react";
 import { getCategoryAnime } from "../utils/fetches";
 import { CategoryContext } from "../Context/CategoryContext";
-import { CategoryCardContainer } from "../fragments/CategoryContainer";
 import CategoryCard from "./CategoryCard";
+import CategoryContainer from '../fragments/CategoryContainer';
 
 const CategorySearch = () => {
   const [categoryContent, setCategoryContent] = useState([]);
@@ -16,7 +16,7 @@ const CategorySearch = () => {
   }, [selectedCategory]);
 
   return (
-    <CategoryCardContainer>
+    <CategoryContainer>
       {categoryContent.map((card, index) => (
         <CategoryCard
           key={index}
@@ -26,11 +26,9 @@ const CategorySearch = () => {
               ? card.attributes.titles.en
               : card.attributes.titles.en_jp
           }
-          ageRating={card.attributes.ageRating}
-          averageRating={card.attributes.averageRating}
         ></CategoryCard>
       ))}
-    </CategoryCardContainer>
+    </CategoryContainer>
   );
 };
 
