@@ -2,7 +2,6 @@ import React, { useState, useEffect, useContext } from "react";
 import { getCategoryAnime } from "../utils/fetches";
 import { CategoryContext } from "../Context/CategoryContext";
 import { CategoryCardContainer } from "../fragments/CategoryContainer";
-import HomeCard from "./HomeCard";
 import CategoryCard from "./CategoryCard";
 
 const CategorySearch = () => {
