@@ -11,6 +11,7 @@ import Trending from "./Pages/Trending";
 import Category from "./Pages/Category";
 
 import { CategoryContextProvider } from "./Context/CategoryContext";
+import AnimeDetails from "./Pages/AnimeDetails";
 
 // import routes from './config/routes';
 
@@ -51,6 +52,9 @@ function App() {
           <Route exact path="/categories">
             <Search searchContent={searchContent} />
             <Category />
+          </Route>
+          <Route exact path="/anime/:id">
+            <AnimeDetails />
           </Route>
         </Switch>
       </CategoryContextProvider>
