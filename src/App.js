@@ -45,11 +45,10 @@ function App() {
           <Route path="/search">
             <Search searchContent={searchContent} />
           </Route>
-          <Route exact path="/trending">
+          <Route path="/trending">
             <Trending />
           </Route>
-          <Route exact path="/categories">
-            <Search searchContent={searchContent} />
+          <Route path="/categories">
             <Category />
           </Route>
         </Switch>
