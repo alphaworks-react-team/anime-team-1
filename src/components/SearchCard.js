@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import AnimeCard from "../fragments/AnimeCard";
 import CardImage from "../fragments/CardImage";
 import CardDetails from "../fragments/CardDetails";
+import TrailerBtn from '../fragments/TrailerBtn';
 import Modal from "./Modal";
 
 const SearchCard = (props) => {
@@ -16,16 +17,11 @@ const SearchCard = (props) => {
           <h3>{props.ageRating}</h3>
           <h3>Rating: {props.averageRating}</h3>
           {props.videoId && (
-            <button
-              style={{
-                outline: "none",
-                backgroundColor: "white",
-                color: "#f16246",
-              }}
+            <TrailerBtn
               onClick={() => setModalOpen(true)}
             >
               Trailer
-            </button>
+            </TrailerBtn>
           )}
           <div>{props.synopsis}</div>
         </CardDetails>
