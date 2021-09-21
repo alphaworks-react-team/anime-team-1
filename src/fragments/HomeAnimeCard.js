@@ -12,6 +12,7 @@ const HomeAnimeCard = styled.div`
   &:hover {
     background: #3d3c72;
     color: white;
+    cursor: pointer;
   }
 `
 

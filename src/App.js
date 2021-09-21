@@ -9,9 +9,9 @@ import Home from "./Pages/Home";
 import Search from "./Pages/Search";
 import Trending from "./Pages/Trending";
 import Category from "./Pages/Category";
-import Anime from "./Pages/Anime";
 
 import { CategoryContextProvider } from "./Context/CategoryContext";
+import AnimeDetails from "./Pages/AnimeDetails";
 
 // import routes from './config/routes';
 
@@ -28,6 +28,7 @@ function App() {
       })
       .then((res) => {
         setSearchContent(res.data.data);
+        console.log(setSearchContent)
       })
       .catch((err) => {
         console.log(err);
@@ -52,9 +53,8 @@ function App() {
           <Route path="/categories">
             <Category />
           </Route>
-
-          <Route path="/anime">
-            <Anime />
+          <Route exact path="/anime/:id">
+            <AnimeDetails />
           </Route>
         </Switch>
       </CategoryContextProvider>

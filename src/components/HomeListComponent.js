@@ -40,6 +40,7 @@ const HomeListComponent = () => {
             key={index}
             img={card.attributes.posterImage.small}
             title={card.attributes.titles.en}
+            id={card.id}
           ></HomeCard>
         ))}
       </HomeListContainer>
@@ -51,6 +52,7 @@ const HomeListComponent = () => {
             key={index}
             img={card.attributes.posterImage.small}
             title={card.attributes.titles.en}
+            id={card.id}
           ></HomeCard>
         ))}
       </HomeListContainer>
@@ -62,6 +64,7 @@ const HomeListComponent = () => {
             key={index}
             img={card.attributes.posterImage.small}
             title={card.attributes.titles.en}
+            id={card.id}
           ></HomeCard>
         ))}
       </HomeListContainer>
