@@ -9,7 +9,7 @@ const CategoryCard = (props) => {
 
   return (
     <HomeAnimeCard>
-      <CardImage 
+      <CardImage
         src={props.img}
         onClick={() => history.push(`/anime/${props.id}`)}
       />
