@@ -14,6 +14,9 @@ const HomeAnimeCard = styled.div`
     color: white;
     cursor: pointer;
   }
-`
+  @media (max-width: 768px) {
+    width: 60%;
+  }
+`;
 
-export default HomeAnimeCard
+export default HomeAnimeCard;

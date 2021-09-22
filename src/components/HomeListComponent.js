@@ -51,7 +51,11 @@ const HomeListComponent = () => {
           <HomeCard
             key={index}
             img={card.attributes.posterImage.small}
-            title={card.attributes.titles.en}
+            title={
+              card.attributes.titles.en
+                ? card.attributes.titles.en
+                : card.attributes.titles.en_jp
+            }
             id={card.id}
           ></HomeCard>
         ))}
