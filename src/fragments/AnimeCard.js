@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 const AnimeCard = styled.div`
   height: 20%;
-  width: 50%;
+  width: 55%;
   margin: 1rem;
   display: flex;
   flex-flow: row;

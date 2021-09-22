@@ -81,10 +81,13 @@ export const getCategoryAnime = async (category) => {
 
 export const getAnimeById = async (id) => {
   try {
-    const getById = await axios.get(`https://kitsu.io/api/edge/anime/${id}`, {
-      headers: headers,
-    });
-    console.log(getById.data);
+    const getById = await axios.get(
+      `https://kitsu.io/api/edge/anime/${id}`, 
+      {
+        headers: headers,
+      }
+    );
+    // console.log(getById.data);
     return getById.data.data;
   } catch (err) {
     console.log(err);
