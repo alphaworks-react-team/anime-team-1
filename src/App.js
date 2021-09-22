@@ -28,6 +28,7 @@ function App() {
       })
       .then((res) => {
         setSearchContent(res.data.data);
+        // console.log(setSearchContent)
       })
       .catch((err) => {
         console.log(err);
@@ -46,7 +47,7 @@ function App() {
           <Route exact path="/search">
             <Search searchContent={searchContent} />
           </Route>
-          <Route exact path="/trending">
+          <Route path="/trending">
             <Trending />
           </Route>
           <Route exact path="/categories">

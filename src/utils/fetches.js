@@ -84,7 +84,6 @@ export const getAnimeById = async (id) => {
     const getById = await axios.get(`https://kitsu.io/api/edge/anime/${id}`, {
       headers: headers,
     });
-    console.log(getById.data);
     return getById.data.data;
   } catch (err) {
     console.log(err);

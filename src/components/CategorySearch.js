@@ -7,13 +7,13 @@ import React, {
 } from "react";
 import { getCategoryAnime } from "../utils/fetches";
 import { CategoryContext } from "../Context/CategoryContext";
-import { CategoryCardContainer } from "../fragments/CategoryContainer";
 import CategoryCard from "./CategoryCard";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import Button from "@mui/material/Button";
 import Fade from "@mui/material/Fade";
 import ReactLoading from "react-loading";
+import CategoryContainer from "../fragments/CategoryContainer";
 
 const CategorySearch = () => {
   const [categoryContent, setCategoryContent] = useState([]);
@@ -125,12 +125,13 @@ const CategorySearch = () => {
           {/* <MenuItem name="popularityRank" onClick={handleFilterSelect}>Logout</MenuItem> */}
         </Menu>
       </div>
-      <CategoryCardContainer>
+      <CategoryContainer>
         {categoryContent &&
           categoryContent.map((card, index) => (
             <CategoryCard
               key={index}
               img={card.attributes.posterImage.medium}
+              id={card.id}
               title={
                 card.attributes.titles.en
                   ? card.attributes.titles.en
@@ -140,7 +141,7 @@ const CategorySearch = () => {
               averageRating={card.attributes.averageRating}
             ></CategoryCard>
           ))}
-      </CategoryCardContainer>
+      </CategoryContainer>
       <div
         style={{
           display: "flex",
