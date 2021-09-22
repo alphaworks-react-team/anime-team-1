@@ -21,6 +21,7 @@ const CategorySearch = () => {
         <CategoryCard
           key={index}
           img={card.attributes.posterImage.medium}
+          id={card.id}
           title={
             card.attributes.titles.en
               ? card.attributes.titles.en

@@ -11,7 +11,7 @@ import { SearchCardContainer } from "../fragments/SearchCardContainer";
 
 import Modal from '../components/Modal';
 
-const AnimeDetails = () => {
+export const AnimeDetails = () => {
   const [anime, setAnime] = useState({});
   const params = useParams();
   const [modalOpen, setModalOpen] = useState(false);
@@ -19,15 +19,17 @@ const AnimeDetails = () => {
   const getAndSetAnime = async () => {
     const getAnime = await getAnimeById(params.id);
     setAnime(getAnime);
-  };
+  } ;
 
   useEffect(() => {
     getAndSetAnime();
-  });
+  }, []);
 
   const dateChanger = (string) => {
     return (dayjs(string).format('MM/DD/YYYY'));
   }
+
+  console.log(anime)
 
   return (
     <SearchCardContainer>
