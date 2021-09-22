@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import dayjs from 'dayjs';
 import { useParams } from "react-router-dom";
 import { getAnimeById } from "../utils/fetches";
 
@@ -24,8 +25,9 @@ const AnimeDetails = () => {
     getAndSetAnime();
   });
 
-  const date = anime.attributes.nextRelease;
-  console.log(date)
+  const dateChanger = (string) => {
+    return (dayjs(string).format('MM/DD/YYYY'));
+  }
 
   return (
     <SearchCardContainer>
@@ -36,7 +38,7 @@ const AnimeDetails = () => {
             <h2>{anime.attributes.titles.en}</h2>
             <p>Started on: {anime.attributes.startDate}</p>
             <p>Status: {anime.attributes.status}</p>
-            <p>Next Episode: {anime.attributes.nextRelease}</p>
+            <p>Next Episode: {dateChanger(anime.attributes.nextRelease)}</p>
             <p>Rated: {anime.attributes.ageRating}</p>
             <p>Popular Rank: {anime.attributes.averageRating}</p>
             {anime.attributes.youtubeVideoId && (
