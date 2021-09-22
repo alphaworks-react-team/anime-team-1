@@ -46,7 +46,7 @@ export const getRanked = async () => {
     console.log(err);
   }
 };
-
+// fetches all 229 categories, filters out if childCount < 3
 export const getCategories = async () => {
   try {
     const categoriesCall = await axios.get(
@@ -65,10 +65,10 @@ export const getCategories = async () => {
   }
 };
 
-export const getCategoryAnime = async (category) => {
+export const getCategoryAnime = async (category, sortBy, offset) => {
   try {
     const getAnimeByCat = await axios.get(
-      `https://kitsu.io/api/edge/anime?filter[categories]=${category}`,
+      `https://kitsu.io/api/edge/anime?filter[categories]=${category}&sort=${sortBy}&page[limit]=12&page[offset]=${offset}`,
       {
         headers: headers,
       }

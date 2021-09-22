@@ -43,14 +43,13 @@ function App() {
           <Route exact path="/">
             <Home />
           </Route>
-          <Route path="/search">
+          <Route exact path="/search">
             <Search searchContent={searchContent} />
           </Route>
           <Route exact path="/trending">
             <Trending />
           </Route>
           <Route exact path="/categories">
-            <Search searchContent={searchContent} />
             <Category />
           </Route>
           <Route exact path="/anime/:id">
