@@ -1,9 +1,11 @@
 import styled from "styled-components";
 
-export const CategoryCardContainer = styled.div`
-  width: 100%;
-  margin-top: 1rem;
+const CategoryCardContainer = styled.div`
   display: flex;
   justify-content: center;
+  align-items: flex-start;
   flex-flow: row wrap;
+  width: 100%;
 `;
+
+export default CategoryCardContainer

@@ -15,6 +15,7 @@ const Search = ({ searchContent }) => {
             averageRating={card.attributes.averageRating}
             synopsis={card.attributes.synopsis}
             videoId={card.attributes.youtubeVideoId}
+            id={card.id}
           ></SearchCard>
         </>
       ))}

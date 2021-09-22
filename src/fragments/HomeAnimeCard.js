@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 const HomeAnimeCard = styled.div`
   height: 20%;
-  width: 50%;
+  width: 20%;
   margin: 1rem;
   display: flex;
   flex-flow: column;
@@ -12,6 +12,7 @@ const HomeAnimeCard = styled.div`
   &:hover {
     background: #3d3c72;
     color: white;
+    cursor: pointer;
   }
 `
 
