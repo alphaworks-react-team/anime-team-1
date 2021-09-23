@@ -15,7 +15,6 @@ const CategoryCard = (props) => {
       />
       <CardDetails>
         <h2>{props.title}</h2>
-        <div>{props.synopsis}</div>
       </CardDetails>
     </HomeAnimeCard>
   );

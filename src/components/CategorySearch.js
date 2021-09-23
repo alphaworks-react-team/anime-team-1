@@ -15,6 +15,7 @@ import Button from "@mui/material/Button";
 import Fade from "@mui/material/Fade";
 import ReactLoading from "react-loading";
 import CategoryContainer from "../fragments/CategoryContainer";
+import { FcExpand } from "react-icons/fc";
 
 const CategorySearch = () => {
   const [categoryContent, setCategoryContent] = useState([]);
@@ -99,7 +100,7 @@ const CategorySearch = () => {
           aria-expanded={open ? "true" : undefined}
           onClick={handleClick}
         >
-          {sortedBy}
+          {sortedBy} <FcExpand />
         </Button>
         <Menu
           id="fade-menu"
@@ -123,7 +124,12 @@ const CategorySearch = () => {
           >
             Ranking
           </MenuItem>
-          {/* <MenuItem name="popularityRank" onClick={handleFilterSelect}>Logout</MenuItem> */}
+          <MenuItem
+            name="popularityRank"
+            onClick={() => handleFilterSelect("-startDate")}
+          >
+            Recently Added
+          </MenuItem>
         </Menu>
       </div>
       <CategoryContainer>
@@ -138,8 +144,6 @@ const CategorySearch = () => {
                   ? card.attributes.titles.en
                   : card.attributes.titles.en_jp
               }
-              ageRating={card.attributes.ageRating}
-              averageRating={card.attributes.averageRating}
             ></CategoryCard>
           ))}
       </CategoryContainer>

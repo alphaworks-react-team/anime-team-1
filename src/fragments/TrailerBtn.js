@@ -6,9 +6,9 @@ const TrailerBtn = styled.button`
   color: white;
   border: none;
   cursor: pointer;
-  font-size: 20px;
+  font-size: 25px;
   height: 2rem;
   margin-bottom: 1rem;
-`
+`;
 
-export default TrailerBtn
+export default TrailerBtn;
