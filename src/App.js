@@ -12,6 +12,7 @@ import Category from "./Pages/Category";
 
 import { CategoryContextProvider } from "./Context/CategoryContext";
 import AnimeDetails from "./Pages/AnimeDetails";
+import { WatchlistProvider } from "./Context/WatchlistContext";
 
 // import routes from './config/routes';
 
@@ -37,6 +38,7 @@ function App() {
 
   return (
     <div className="App">
+      <WatchlistProvider>
       <CategoryContextProvider>
         <Nav />
         <SearchComponent searchAnime={searchAnime} />
@@ -58,6 +60,7 @@ function App() {
           </Route>
         </Switch>
       </CategoryContextProvider>
+      </WatchlistProvider>
     </div>
   );
 }

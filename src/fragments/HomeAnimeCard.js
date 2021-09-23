@@ -14,6 +14,12 @@ const HomeAnimeCard = styled.div`
     color: white;
     cursor: pointer;
   }
+
+  @media (max-width: 768px) {
+    align-items: center;
+    flex-direction: column;
+    width: 50%;
+  }
 `
 
 export default HomeAnimeCard

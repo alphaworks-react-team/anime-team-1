@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import dayjs from 'dayjs';
 import { useParams } from "react-router-dom";
 import { getAnimeById } from "../utils/fetches";
@@ -7,14 +7,18 @@ import AnimeCard from "../fragments/AnimeCard";
 import CardDetails from "../fragments/CardDetails";
 import CardImage from "../fragments/CardImage";
 import TrailerBtn from "../fragments/TrailerBtn";
+import FavoriteBtn from "../fragments/FavoriteBtn";
 import { SearchCardContainer } from "../fragments/SearchCardContainer";
 
 import Modal from '../components/Modal';
+import { WatchlistContext } from "../Context/WatchlistContext";
 
 export const AnimeDetails = () => {
   const [anime, setAnime] = useState({});
   const params = useParams();
   const [modalOpen, setModalOpen] = useState(false);
+  const {watchlist, setWatchlist, addAnimeToWatchlist} = useContext(WatchlistContext)
+  
 
   const getAndSetAnime = async () => {
     const getAnime = await getAnimeById(params.id);
@@ -28,8 +32,6 @@ export const AnimeDetails = () => {
   const dateChanger = (string) => {
     return (dayjs(string).format('MM/DD/YYYY'));
   }
-
-  console.log(anime)
 
   return (
     <SearchCardContainer>
@@ -50,6 +52,11 @@ export const AnimeDetails = () => {
                 Trailer
               </TrailerBtn>
             )}
+            <FavoriteBtn 
+              onClick={() => addAnimeToWatchlist(anime)}
+            >
+              Add to Watchlist
+            </FavoriteBtn>
 
             <div>{anime.attributes.synopsis}</div>
           </CardDetails>
