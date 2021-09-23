@@ -6,19 +6,17 @@ const Search = ({ searchContent }) => {
   return (
     <SearchCardContainer>
       {searchContent.map((card, index) => (
-        <>
-          <SearchCard
-            key={index}
-            img={card.attributes.posterImage.small}
-            title={card.attributes.titles.en}
-            ageRating={card.attributes.ageRating}
-            averageRating={card.attributes.averageRating}
-            synopsis={card.attributes.synopsis}
-            videoId={card.attributes.youtubeVideoId}
-            type={card.attributes.subtype}
-            id={card.id}
-          ></SearchCard>
-        </>
+        <SearchCard
+          key={index}
+          img={card.attributes.posterImage.small}
+          title={card.attributes.titles.en}
+          ageRating={card.attributes.ageRating}
+          averageRating={card.attributes.averageRating}
+          synopsis={card.attributes.synopsis}
+          videoId={card.attributes.youtubeVideoId}
+          type={card.attributes.subtype}
+          id={card.id}
+        ></SearchCard>
       ))}
     </SearchCardContainer>
   );

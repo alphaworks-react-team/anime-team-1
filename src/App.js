@@ -7,7 +7,7 @@ import Nav from "./components/Nav";
 import SearchComponent from "./components/SearchComponent";
 import Home from "./Pages/Home";
 import Search from "./Pages/Search";
-import Trending from "./Pages/Trending";
+import Watchlist from "./Pages/Watchlist";
 import Category from "./Pages/Category";
 
 import { CategoryContextProvider } from "./Context/CategoryContext";
@@ -50,9 +50,9 @@ function App() {
             <SearchComponent searchAnime={searchAnime} />
             <Search searchContent={searchContent} />
           </Route>
-          <Route path="/trending">
+          <Route path="/Watchlist">
             <SearchComponent searchAnime={searchAnime} />
-            <Trending />
+            <Watchlist />
           </Route>
           <Route exact path="/categories">
             <SearchComponent searchAnime={searchAnime} />

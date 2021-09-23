@@ -6,10 +6,14 @@ const FavoriteBtn = styled.button`
   color: white;
   border: none;
   cursor: pointer;
-  font-size: 20px;
+  font-size: 25px;
   height: 2rem;
-  margin-bottom: 1rem;
-  margin-left: 1rem;
+  margin: 1rem;
+  
+  &:hover {
+    background: #3d3c72;
+    color: #ffbf00;
+  }
 `
 
 export default FavoriteBtn

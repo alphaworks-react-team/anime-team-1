@@ -12,6 +12,7 @@ import { AiFillStar } from "react-icons/ai";
 import { BsFillPlayFill } from "react-icons/bs";
 import FavoriteBtn from "../fragments/FavoriteBtn";
 import { WatchlistContext } from "../Context/WatchlistContext";
+import RemoveAnime from "../components/RemoveAnime";
 
 export const AnimeDetails = () => {
   const [anime, setAnime] = useState({});

@@ -7,6 +7,7 @@ const AnimeCard = styled.div`
   display: flex;
   flex-flow: row;
   color: #3d3c72;
+  cursor: pointer;
 
   &:hover {
     background: #3d3c72;
