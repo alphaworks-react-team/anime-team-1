@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import dayjs from "dayjs";
 import { useParams } from "react-router-dom";
 import { getAnimeById } from "../utils/fetches";
+import { getAnimeStreamLinksById } from "../utils/fetches";
 
 import TrailerBtn from "../fragments/TrailerBtn";
 import Banner from "../fragments/Banner";
@@ -15,24 +16,27 @@ import { WatchlistContext } from "../Context/WatchlistContext";
 
 export const AnimeDetails = () => {
   const [anime, setAnime] = useState({});
+  const [animeLinks, setAnimeLinks] = useState([]);
   const [modalOpen, setModalOpen] = useState(false);
   const params = useParams();
   const { addAnimeToWatchlist } = useContext(WatchlistContext);
 
   const getAndSetAnime = async () => {
     const getAnime = await getAnimeById(params.id);
+    const getAnimeLinks = await getAnimeStreamLinksById(params.id);
     setAnime(getAnime);
+    setAnimeLinks(getAnimeLinks);
   };
 
   useEffect(() => {
-    getAndSetAnime();
+    (async function () {
+      getAndSetAnime();
+    })();
   }, []);
 
   const dateChanger = (string) => {
     return dayjs(string).format("MM/DD/YYYY");
   };
-
-  console.log(anime);
 
   return (
     <div style={{ marginBottom: "10px" }}>
@@ -43,11 +47,27 @@ export const AnimeDetails = () => {
           </Banner>
           <div style={{ display: "flex", justifyContent: "center" }}>
             <DetailsContainer>
-              <div>
-                <img
-                  style={{ maxHeight: "75%" }}
-                  src={anime.attributes.posterImage.small}
-                />
+              <div style={{ display: "flex", justifyContent: "center" }}>
+                <div style={{ height: "100%" }}>
+                  <img
+                    style={{ maxHeight: "60%" }}
+                    src={anime.attributes.posterImage.small}
+                  />
+                  <div
+                    style={{
+                      display: "flex",
+                      flexFlow: "column",
+                    }}
+                  >
+                    <h3>Links to Watch at:</h3>
+                    {animeLinks.length > 1 &&
+                      animeLinks[0].map((links, index) => (
+                        <a href={animeLinks[1][index]}>
+                          <TrailerBtn>{links}</TrailerBtn>
+                        </a>
+                      ))}
+                  </div>
+                </div>
               </div>
               <div style={{ margin: "1rem" }}>
                 <div style={{ display: "flex", justifyContent: "center" }}>
