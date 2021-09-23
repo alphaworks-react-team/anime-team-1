@@ -8,6 +8,7 @@ import React, {
 import { getCategoryAnime } from "../utils/fetches";
 import { CategoryContext } from "../Context/CategoryContext";
 import CategoryCard from "./CategoryCard";
+import LoaderContainer from "../fragments/LoaderContainer";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import Button from "@mui/material/Button";
@@ -91,7 +92,7 @@ const CategorySearch = () => {
     <div>
       <h1>{selectedCategory} Anime</h1>
       <div>
-        <h2>Sorted By </h2>
+        <span>Sort by: </span>
         <Button
           id="fade-button"
           aria-controls="fade-menu"
@@ -146,22 +147,16 @@ const CategorySearch = () => {
             ></CategoryCard>
           ))}
       </CategoryContainer>
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      >
+      <LoaderContainer>
         {loading && (
           <ReactLoading
             type={"bars"}
-            color={"#ffbf00"}
-            height={"10%"}
-            width={"20%"}
+            color={"#f16246"}
+            height={"5%"}
+            width={"8%"}
           />
         )}
-      </div>
+      </LoaderContainer>
       <div ref={loader} />
     </div>
   );

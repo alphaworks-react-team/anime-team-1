@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import dayjs from "dayjs";
 import { useParams } from "react-router-dom";
 import { getAnimeById } from "../utils/fetches";
@@ -10,11 +10,14 @@ import Modal from "../components/Modal";
 import { FcLike } from "react-icons/fc";
 import { AiFillStar } from "react-icons/ai";
 import { BsFillPlayFill } from "react-icons/bs";
+import FavoriteBtn from "../fragments/FavoriteBtn";
+import { WatchlistContext } from "../Context/WatchlistContext";
 
 export const AnimeDetails = () => {
   const [anime, setAnime] = useState({});
   const [modalOpen, setModalOpen] = useState(false);
   const params = useParams();
+  const { addAnimeToWatchlist } = useContext(WatchlistContext);
 
   const getAndSetAnime = async () => {
     const getAnime = await getAnimeById(params.id);
@@ -94,8 +97,9 @@ export const AnimeDetails = () => {
                       Trailer <BsFillPlayFill />
                     </TrailerBtn>
                   )}
-                  {/* second button to add to watchlist */}
-                  <TrailerBtn>Add to Watchlist</TrailerBtn>
+                  <FavoriteBtn onClick={() => addAnimeToWatchlist(anime)}>
+                    Add to Watchlist
+                  </FavoriteBtn>
                 </div>
               </div>
             </DetailsContainer>
