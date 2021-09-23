@@ -12,7 +12,6 @@ import { AiFillStar } from "react-icons/ai";
 import { BsFillPlayFill } from "react-icons/bs";
 import FavoriteBtn from "../fragments/FavoriteBtn";
 import { WatchlistContext } from "../Context/WatchlistContext";
-import RemoveAnime from "../components/RemoveAnime";
 
 export const AnimeDetails = () => {
   const [anime, setAnime] = useState({});
@@ -32,8 +31,6 @@ export const AnimeDetails = () => {
   const dateChanger = (string) => {
     return dayjs(string).format("MM/DD/YYYY");
   };
-
-  console.log(anime);
 
   return (
     <div style={{ marginBottom: "10px" }}>
