@@ -40,7 +40,12 @@ export const AnimeDetails = () => {
           </Banner>
           <div style={{ display: "flex", justifyContent: "center" }}>
             <DetailsContainer>
-              <img src={anime.attributes.posterImage.small} />
+              <div>
+                <img
+                  style={{ maxHeight: "75%" }}
+                  src={anime.attributes.posterImage.small}
+                />
+              </div>
               <div style={{ margin: "1rem" }}>
                 <div style={{ display: "flex", justifyContent: "center" }}>
                   <h1 style={{ margin: "0px", color: "#3d3c72" }}>
