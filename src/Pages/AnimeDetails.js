@@ -1,62 +1,114 @@
 import React, { useState, useEffect } from "react";
-import dayjs from 'dayjs';
+import dayjs from "dayjs";
 import { useParams } from "react-router-dom";
 import { getAnimeById } from "../utils/fetches";
 
-import AnimeCard from "../fragments/AnimeCard";
-import CardDetails from "../fragments/CardDetails";
-import CardImage from "../fragments/CardImage";
 import TrailerBtn from "../fragments/TrailerBtn";
-import { SearchCardContainer } from "../fragments/SearchCardContainer";
-
-import Modal from '../components/Modal';
+import Banner from "../fragments/Banner";
+import DetailsContainer from "../fragments/DetailsContainer";
+import Modal from "../components/Modal";
+import { FcLike } from "react-icons/fc";
+import { AiFillStar } from "react-icons/ai";
+import { BsFillPlayFill } from "react-icons/bs";
 
 export const AnimeDetails = () => {
   const [anime, setAnime] = useState({});
-  const params = useParams();
   const [modalOpen, setModalOpen] = useState(false);
+  const params = useParams();
 
   const getAndSetAnime = async () => {
     const getAnime = await getAnimeById(params.id);
     setAnime(getAnime);
-  } ;
+  };
 
   useEffect(() => {
     getAndSetAnime();
   }, []);
 
   const dateChanger = (string) => {
-    return (dayjs(string).format('MM/DD/YYYY'));
-  }
+    return dayjs(string).format("MM/DD/YYYY");
+  };
 
-  console.log(anime)
+  console.log(anime);
 
   return (
-    <SearchCardContainer>
+    <div style={{ marginBottom: "10px" }}>
       {anime.attributes && (
-        <AnimeCard>
-          <CardImage src={anime.attributes.posterImage.small} />
-          <CardDetails>
-            <h2>{anime.attributes.titles.en}</h2>
-            <p>Started on: {anime.attributes.startDate}</p>
-            <p>Status: {anime.attributes.status}</p>
-            <p>Next Episode: {dateChanger(anime.attributes.nextRelease)}</p>
-            <p>Rated: {anime.attributes.ageRating}</p>
-            <p>Popular Rank: {anime.attributes.averageRating}</p>
-            {anime.attributes.youtubeVideoId && (
-              <TrailerBtn
-                onClick={() => setModalOpen(true)}
-              >
-                Trailer
-              </TrailerBtn>
-            )}
-
-            <div>{anime.attributes.synopsis}</div>
-          </CardDetails>
-        </AnimeCard>
+        <div>
+          <Banner>
+            <img src={anime.attributes.coverImage.small} alt="" />
+          </Banner>
+          <div style={{ display: "flex", justifyContent: "center" }}>
+            <DetailsContainer>
+              <img src={anime.attributes.posterImage.small} />
+              <div style={{ margin: "1rem" }}>
+                <div style={{ display: "flex", justifyContent: "center" }}>
+                  <h1 style={{ margin: "0px", color: "#3d3c72" }}>
+                    {anime.attributes.titles.en
+                      ? anime.attributes.titles.en
+                      : anime.attributes.titles.en_jp}
+                  </h1>
+                </div>
+                <div
+                  style={{ display: "flex", justifyContent: "space-around" }}
+                >
+                  <h4>Show Type: ({anime.attributes.subtype})</h4>
+                  <h4>Rated: {anime.attributes.ageRating}</h4>
+                  <h4>Started on: {anime.attributes.startDate}</h4>
+                  <h4>Status: {anime.attributes.status}</h4>
+                </div>
+                <div
+                  style={{ display: "flex", justifyContent: "space-around" }}
+                >
+                  <h4 style={{ color: "#f16246" }}>
+                    <FcLike /> Rank #{anime.attributes.popularityRank} Most
+                    Popular
+                  </h4>
+                  <h4 style={{ color: "#f16246" }}>
+                    <AiFillStar color="gold" /> Rank #
+                    {anime.attributes.ratingRank} Highest Rated
+                  </h4>
+                </div>
+                <div style={{ textAlign: "left" }}>
+                  {anime.attributes.synopsis}
+                </div>
+                {anime.attributes.nextRelease && (
+                  <h4>
+                    Next Episode: {dateChanger(anime.attributes.nextRelease)}
+                  </h4>
+                )}
+                <div
+                  style={{
+                    display: "flex",
+                    justifyContent: "space-around",
+                    alignItems: "center",
+                  }}
+                >
+                  {anime.attributes.youtubeVideoId && (
+                    <TrailerBtn onClick={() => setModalOpen(true)}>
+                      Trailer <BsFillPlayFill />
+                    </TrailerBtn>
+                  )}
+                  {/* second button to add to watchlist */}
+                  <TrailerBtn>Add to Watchlist</TrailerBtn>
+                </div>
+              </div>
+            </DetailsContainer>
+          </div>
+        </div>
       )}
-      {modalOpen && <Modal videoId={anime.attributes.youtubeVideoId} />}
-    </SearchCardContainer>
+      {modalOpen && (
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            marginLeft: "280px",
+          }}
+        >
+          <Modal videoId={anime.attributes.youtubeVideoId} />
+        </div>
+      )}
+    </div>
   );
 };
 

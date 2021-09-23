@@ -39,18 +39,21 @@ function App() {
     <div className="App">
       <CategoryContextProvider>
         <Nav />
-        <SearchComponent searchAnime={searchAnime} />
         <Switch>
           <Route exact path="/">
+            <SearchComponent searchAnime={searchAnime} />
             <Home />
           </Route>
           <Route exact path="/search">
+            <SearchComponent searchAnime={searchAnime} />
             <Search searchContent={searchContent} />
           </Route>
           <Route path="/trending">
+            <SearchComponent searchAnime={searchAnime} />
             <Trending />
           </Route>
           <Route exact path="/categories">
+            <SearchComponent searchAnime={searchAnime} />
             <Category />
           </Route>
           <Route exact path="/anime/:id">
