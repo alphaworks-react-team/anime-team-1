@@ -15,7 +15,7 @@ const WatchList = (props) => {
             img={anime.attributes.posterImage.small}
             title={anime.attributes.titles.en}
             id={anime.id}
-            >
+            >import AnimeCard from '../fragments/AnimeCard'
             </HomeCard>
           ))}
         </HomeListContainer>
