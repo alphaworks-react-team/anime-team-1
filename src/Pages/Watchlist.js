@@ -1,8 +1,7 @@
 import React from 'react'
-// import HomeListComponent from '../components/HomeListComponent'
 import WatchList from '../components/WatchList'
 
-const Trending = () => {
+const Watchlist = () => {
   return (
     <div>
       <WatchList/>
@@ -10,4 +9,4 @@ const Trending = () => {
   )
 }
 
-export default Trending
+export default Watchlist

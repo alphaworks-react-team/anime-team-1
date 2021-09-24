@@ -4,7 +4,7 @@ import { HomeListContainer } from '../fragments/HomeListContainer'
 import HomeCard from './HomeCard'
 
 const WatchList = (props) => {
-  const {watchlist, setWatchlist, addAnimeToWatchlist} = useContext(WatchlistContext)
+  const {watchlist} = useContext(WatchlistContext)
   return (
     <div>
       <h2>Watchlist</h2>
@@ -15,7 +15,7 @@ const WatchList = (props) => {
             img={anime.attributes.posterImage.small}
             title={anime.attributes.titles.en}
             id={anime.id}
-            >import AnimeCard from '../fragments/AnimeCard'
+            >
             </HomeCard>
           ))}
         </HomeListContainer>
