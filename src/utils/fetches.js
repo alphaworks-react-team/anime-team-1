@@ -98,6 +98,7 @@ export const getAnimeEpisodesById = async (id) => {
         headers: headers,
       }
     );
+    // console.log(getById.data.data)
     return getById.data.data;
   } catch (err) {
     console.log(err);

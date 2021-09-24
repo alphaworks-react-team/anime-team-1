@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import { getAnimeById } from "../utils/fetches";
 import { getAnimeStreamLinksById } from "../utils/fetches";
 import { getAnimeEpisodesById } from "../utils/fetches";
-import { getRelatedAnime } from "../utils/fetches";
+// import { getRelatedAnime } from "../utils/fetches";
 
 import TrailerBtn from "../fragments/TrailerBtn";
 import Banner from "../fragments/Banner";
@@ -15,13 +15,17 @@ import { AiFillStar } from "react-icons/ai";
 import { BsFillPlayFill } from "react-icons/bs";
 import FavoriteBtn from "../fragments/FavoriteBtn";
 import { WatchlistContext } from "../Context/WatchlistContext";
-import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
+import EpImage from "../fragments/EpImage";
+import AnimeDetailsContainer from "../fragments/AnimeDetailsContainer";
+import CardDetails from "../fragments/CardDetails";
+import EpContainer from "../fragments/EpContainer";
+// import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 
 export const AnimeDetails = () => {
   const [anime, setAnime] = useState({});
   const [animeLinks, setAnimeLinks] = useState([]);
   const [animeEpisodes, setAnimeEpisodes] = useState([]);
-  const [relatedAnime, setRelatedAnime] = useState([]);
+  // const [relatedAnime, setRelatedAnime] = useState([]);
   const [modalOpen, setModalOpen] = useState(false);
   const params = useParams();
   const { addAnimeToWatchlist } = useContext(WatchlistContext);
@@ -48,7 +52,7 @@ export const AnimeDetails = () => {
   };
 
   return (
-    <div style={{ marginBottom: "10px" }}>
+    <AnimeDetailsContainer>
       {anime.attributes && (
         <div>
           <Banner>
@@ -56,17 +60,18 @@ export const AnimeDetails = () => {
           </Banner>
           <div style={{ display: "flex", justifyContent: "center" }}>
             <DetailsContainer>
-              <div style={{ display: "flex", justifyContent: "center" }}>
-                <div style={{ height: "100%" }}>
+
+                {/* Left div container */}
+                <div style={{ height: "100%" }}> 
                   <img
-                    style={{ maxHeight: "60%" }}
                     src={anime.attributes.posterImage.small}
+                    alt=""
                   />
                   <div
                     style={{
-                      display: "flex",
-                      flexFlow: "column",
-                    }}
+                    display: "flex",
+                    flexFlow: "column",
+                  }}
                   >
                     <h3>Links to Watch at:</h3>
                     {animeLinks.length > 1 &&
@@ -77,34 +82,10 @@ export const AnimeDetails = () => {
                       ))}
                   </div>
                 </div>
-              </div>
-              <div style={{ margin: "1rem" }}>
-                {/* <Tabs>
-          <TabList>
-            <Tab>Info</Tab>
-            <Tab>Episodes</Tab>
-            <Tab>Related</Tab>
-          </TabList>
-          <TabPanel>
-            <Summary
-              anime={anime}
-              animeCategories={animeCategories}
-              animeGenres={animeGenres}
-              CharacterPreview={CharacterPreview}
-              producer={producer}
-              id={anime?.id}
-            />
-          </TabPanel>
-          <TabPanel>
-            <Character characters={animeCharacters} />
-          </TabPanel>
-          <TabPanel>
-            <Episodes episodes={animeEpisodes} />
-          </TabPanel>
-          <TabPanel>
-            <Related related={relatedAnime} />
-          </TabPanel>
-        </Tabs> */}
+                {/* Left div container */}
+                
+              {/* Middle details */}
+              <CardDetails>
                 <div style={{ display: "flex", justifyContent: "center" }}>
                   <h1 style={{ margin: "0px", color: "#3d3c72" }}>
                     {anime.attributes.titles.en
@@ -135,11 +116,13 @@ export const AnimeDetails = () => {
                 <div style={{ textAlign: "left" }}>
                   {anime.attributes.synopsis}
                 </div>
+                <div style={{ display: "flex", alignItems: "center", justifyContent: "center"}}>
                 {anime.attributes.nextRelease && (
                   <h4>
                     Next Episode: {dateChanger(anime.attributes.nextRelease)}
                   </h4>
                 )}
+                </div>
                 <div
                   style={{
                     display: "flex",
@@ -156,24 +139,30 @@ export const AnimeDetails = () => {
                     Add to Watchlist
                   </FavoriteBtn>
                 </div>
-              </div>
-              <div>
+              </CardDetails>
+              {/* Middle details */}
+
+              {/* Right Episodes div */}
+              <EpContainer>
                 {animeEpisodes &&
                   animeEpisodes.map((episode) => (
                     <div>
-                      <h5>
+                      <h4>
                         Season {episode.attributes.seasonNumber} Episode{" "}
                         {episode.attributes.number}
-                      </h5>
-                      <h4>
+                      </h4>
+                      {/* <p>
                         {episode.attributes.titles.en
                           ? episode.attributes.titles.en
                           : episode.attributes.titles.en_jp}
-                      </h4>
-                      <img src={episode.attributes.thumbnail.original}></img>
+                      </p> */}
+                      <EpImage src={episode.attributes.thumbnail.original} alt=""/>
                     </div>
                   ))}
-              </div>
+              </EpContainer>
+              {/* Right Episodes div */}
+
+              
             </DetailsContainer>
           </div>
         </div>
@@ -189,7 +178,7 @@ export const AnimeDetails = () => {
           <Modal videoId={anime.attributes.youtubeVideoId} />
         </div>
       )}
-    </div>
+    </AnimeDetailsContainer>
   );
 };
 
