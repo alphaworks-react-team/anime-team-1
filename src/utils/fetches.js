@@ -90,6 +90,20 @@ export const getAnimeById = async (id) => {
   }
 };
 
+export const getAnimeEpisodesById = async (id) => {
+  try {
+    const getById = await axios.get(
+      `https://kitsu.io/api/edge/anime/${id}/episodes`,
+      {
+        headers: headers,
+      }
+    );
+    return getById.data.data;
+  } catch (err) {
+    console.log(err);
+  }
+};
+
 export const getAnimeStreamLinksById = async (id) => {
   try {
     const getById = await axios.get(

@@ -3,6 +3,7 @@ import dayjs from "dayjs";
 import { useParams } from "react-router-dom";
 import { getAnimeById } from "../utils/fetches";
 import { getAnimeStreamLinksById } from "../utils/fetches";
+import { getAnimeEpisodesById } from "../utils/fetches";
 
 import TrailerBtn from "../fragments/TrailerBtn";
 import Banner from "../fragments/Banner";
@@ -17,6 +18,7 @@ import { WatchlistContext } from "../Context/WatchlistContext";
 export const AnimeDetails = () => {
   const [anime, setAnime] = useState({});
   const [animeLinks, setAnimeLinks] = useState([]);
+  const [animeEpisodes, setAnimeEpisodes] = useState([]);
   const [modalOpen, setModalOpen] = useState(false);
   const params = useParams();
   const { addAnimeToWatchlist } = useContext(WatchlistContext);
@@ -24,8 +26,10 @@ export const AnimeDetails = () => {
   const getAndSetAnime = async () => {
     const getAnime = await getAnimeById(params.id);
     const getAnimeLinks = await getAnimeStreamLinksById(params.id);
+    const getAnimeEps = await getAnimeEpisodesById(params.id);
     setAnime(getAnime);
     setAnimeLinks(getAnimeLinks);
+    setAnimeEpisodes(getAnimeEps);
   };
 
   useEffect(() => {
@@ -121,6 +125,24 @@ export const AnimeDetails = () => {
                     Add to Watchlist
                   </FavoriteBtn>
                 </div>
+              </div>
+              <div>
+                {animeEpisodes &&
+                  animeEpisodes.map((episode) => (
+                    <div>
+                      <h5>
+                        Season {episode.attributes.seasonNumber} Episode{" "}
+                        {episode.attributes.number}
+                      </h5>
+
+                      <h4>
+                        {episode.attributes.titles.en
+                          ? episode.attributes.titles.en
+                          : episode.attributes.titles.en_jp}
+                      </h4>
+                      <img src={episode.attributes.thumbnail.original}></img>
+                    </div>
+                  ))}
               </div>
             </DetailsContainer>
           </div>
