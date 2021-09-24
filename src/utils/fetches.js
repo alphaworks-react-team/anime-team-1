@@ -131,3 +131,17 @@ export const getAnimeStreamLinksById = async (id) => {
     console.log(err);
   }
 };
+
+export const getRelatedAnime = async (title) => {
+  try {
+    const result = await axios.get(
+      `https://kitsu.io/api/edge/anime/?filter[text]=${title}&page[limit]=20`,
+      {
+        headers: headers,
+      }
+    );
+    return result.data.data;
+  } catch (error) {
+    console.log(error);
+  }
+};

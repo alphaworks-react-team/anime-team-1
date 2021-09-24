@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import { getAnimeById } from "../utils/fetches";
 import { getAnimeStreamLinksById } from "../utils/fetches";
 import { getAnimeEpisodesById } from "../utils/fetches";
+import { getRelatedAnime } from "../utils/fetches";
 
 import TrailerBtn from "../fragments/TrailerBtn";
 import Banner from "../fragments/Banner";
@@ -14,11 +15,13 @@ import { AiFillStar } from "react-icons/ai";
 import { BsFillPlayFill } from "react-icons/bs";
 import FavoriteBtn from "../fragments/FavoriteBtn";
 import { WatchlistContext } from "../Context/WatchlistContext";
+import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 
 export const AnimeDetails = () => {
   const [anime, setAnime] = useState({});
   const [animeLinks, setAnimeLinks] = useState([]);
   const [animeEpisodes, setAnimeEpisodes] = useState([]);
+  const [relatedAnime, setRelatedAnime] = useState([]);
   const [modalOpen, setModalOpen] = useState(false);
   const params = useParams();
   const { addAnimeToWatchlist } = useContext(WatchlistContext);
@@ -27,9 +30,11 @@ export const AnimeDetails = () => {
     const getAnime = await getAnimeById(params.id);
     const getAnimeLinks = await getAnimeStreamLinksById(params.id);
     const getAnimeEps = await getAnimeEpisodesById(params.id);
+    // const getRelated = await getRelatedAnime(anime.attributes.titles.en);
     setAnime(getAnime);
     setAnimeLinks(getAnimeLinks);
     setAnimeEpisodes(getAnimeEps);
+    // setRelatedAnime(getRelated);
   };
 
   useEffect(() => {
@@ -74,6 +79,32 @@ export const AnimeDetails = () => {
                 </div>
               </div>
               <div style={{ margin: "1rem" }}>
+                {/* <Tabs>
+          <TabList>
+            <Tab>Info</Tab>
+            <Tab>Episodes</Tab>
+            <Tab>Related</Tab>
+          </TabList>
+          <TabPanel>
+            <Summary
+              anime={anime}
+              animeCategories={animeCategories}
+              animeGenres={animeGenres}
+              CharacterPreview={CharacterPreview}
+              producer={producer}
+              id={anime?.id}
+            />
+          </TabPanel>
+          <TabPanel>
+            <Character characters={animeCharacters} />
+          </TabPanel>
+          <TabPanel>
+            <Episodes episodes={animeEpisodes} />
+          </TabPanel>
+          <TabPanel>
+            <Related related={relatedAnime} />
+          </TabPanel>
+        </Tabs> */}
                 <div style={{ display: "flex", justifyContent: "center" }}>
                   <h1 style={{ margin: "0px", color: "#3d3c72" }}>
                     {anime.attributes.titles.en
@@ -134,7 +165,6 @@ export const AnimeDetails = () => {
                         Season {episode.attributes.seasonNumber} Episode{" "}
                         {episode.attributes.number}
                       </h5>
-
                       <h4>
                         {episode.attributes.titles.en
                           ? episode.attributes.titles.en
