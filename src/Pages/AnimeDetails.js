@@ -9,24 +9,26 @@ import {
   getRelatedAnime,
 } from "../utils/fetches";
 
+import SearchCard from "../components/SearchCard";
+import { SearchCardContainer } from "../fragments/SearchCardContainer";
 import TrailerBtn from "../fragments/TrailerBtn";
 import Banner from "../fragments/Banner";
 import DetailsContainer from "../fragments/DetailsContainer";
+import FavoriteBtn from "../fragments/FavoriteBtn";
 import Modal from "../components/Modal";
 import { FcLike } from "react-icons/fc";
 import { AiFillStar } from "react-icons/ai";
 import { BsFillPlayFill } from "react-icons/bs";
-import FavoriteBtn from "../fragments/FavoriteBtn";
 import { WatchlistContext } from "../Context/WatchlistContext";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 
 const TabContainer = styled.div`
-  width: 90%;
+  width: 100%;
 `;
 
 export const AnimeDetails = () => {
-  const [anime, setAnime] = useState({});
+  const [anime, setAnime] = useState([]);
   const [animeLinks, setAnimeLinks] = useState([]);
   const [animeEpisodes, setAnimeEpisodes] = useState([]);
   const [relatedAnime, setRelatedAnime] = useState([]);
@@ -41,16 +43,6 @@ export const AnimeDetails = () => {
     setAnime(getAnime);
     setAnimeLinks(getAnimeLinks);
     setAnimeEpisodes(getAnimeEps);
-    // console.log(getRelated);
-    //     setTimeout(() => {
-    //       const getRelated = await getRelatedAnime(
-    //         anime.attributes.titles.en
-    //           ? anime.attributes.titles.en
-    //           : anime.attributes.titles.en_jp
-    //       );
-    // setRelatedAnime(getRelated);
-
-    // }, 1000);
   };
 
   useEffect(() => {
@@ -58,6 +50,11 @@ export const AnimeDetails = () => {
       getAndSetAnime();
     })();
   }, []);
+
+  const relatedClick = async () => {
+    const getRelated = await getRelatedAnime(anime.attributes.titles.en);
+    setRelatedAnime(getRelated);
+  };
 
   const dateChanger = (string) => {
     return dayjs(string).format("MM/DD/YYYY");
@@ -73,7 +70,7 @@ export const AnimeDetails = () => {
           <div style={{ display: "flex", justifyContent: "center" }}>
             <DetailsContainer>
               <TabContainer>
-                <Tabs>
+                <Tabs defaultIndex={0} onSelect={() => relatedClick()}>
                   <TabList>
                     <Tab>Info</Tab>
                     <Tab>Episodes</Tab>
@@ -96,7 +93,7 @@ export const AnimeDetails = () => {
                             <h3>Links to Watch at:</h3>
                             {animeLinks.length > 1 &&
                               animeLinks[0].map((links, index) => (
-                                <a href={animeLinks[1][index]}>
+                                <a key={index} href={animeLinks[1][index]}>
                                   <TrailerBtn>{links}</TrailerBtn>
                                 </a>
                               ))}
@@ -178,8 +175,8 @@ export const AnimeDetails = () => {
                       }}
                     >
                       {animeEpisodes &&
-                        animeEpisodes.map((episode) => (
-                          <div>
+                        animeEpisodes.map((episode, index) => (
+                          <div key={index}>
                             <div
                               style={{
                                 display: "flex",
@@ -222,8 +219,24 @@ export const AnimeDetails = () => {
                         ))}
                     </div>
                   </TabPanel>
-                  <TabPanel>
-                    {relatedAnime.length > 2 && <h1>{relatedAnime[0].id}</h1>}
+                  <TabPanel onSelect={() => relatedClick()}>
+                    {relatedAnime.length > 2 && (
+                      <SearchCardContainer>
+                        {relatedAnime.map((anime, index) => (
+                          <SearchCard
+                            key={index}
+                            img={anime.attributes.posterImage.small}
+                            title={anime.attributes.titles.en}
+                            ageRating={anime.attributes.ageRating}
+                            averageRating={anime.attributes.averageRating}
+                            synopsis={anime.attributes.synopsis}
+                            videoId={anime.attributes.youtubeVideoId}
+                            type={anime.attributes.subtype}
+                            id={anime.id}
+                          ></SearchCard>
+                        ))}
+                      </SearchCardContainer>
+                    )}
                   </TabPanel>
                 </Tabs>
               </TabContainer>
