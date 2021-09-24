@@ -32,8 +32,6 @@ export const AnimeDetails = () => {
     return dayjs(string).format("MM/DD/YYYY");
   };
 
-  console.log(anime);
-
   return (
     <div style={{ marginBottom: "10px" }}>
       {anime.attributes && (

@@ -24,6 +24,7 @@ const NavText = styled.div`
   font-size: 1.5rem;
   font-weight: bolder;
   cursor: pointer;
+  text-decoration: none;
 
   &:hover {
     color: #ffbf00;
@@ -53,8 +54,8 @@ const Nav = () => {
       <Link to={"/"}>
         <NavText>Home</NavText>
       </Link>
-      <Link to={"/trending"}>
-        <NavText>Trending</NavText>
+      <Link to={"/watchlist"}>
+        <NavText>Watchlist</NavText>
       </Link>
       <NavText
         id="basic-button"

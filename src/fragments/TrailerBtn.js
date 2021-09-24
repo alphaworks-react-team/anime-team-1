@@ -8,7 +8,12 @@ const TrailerBtn = styled.button`
   cursor: pointer;
   font-size: 25px;
   height: 2rem;
-  margin-bottom: 1rem;
+  margin: 1rem;
+  
+  &:hover {
+    background: #3d3c72;
+    color: #ffbf00;
+  }
 `;
 
 export default TrailerBtn;
