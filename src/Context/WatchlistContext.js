@@ -20,28 +20,15 @@ const WatchlistProvider = ({ children }) => {
   }, []);
 
   const addAnimeToWatchlist = (anime) => {
-    if (watchlist.length == 0) {
-      watchlist.push(anime);
+    if (watchlist == null) {
+      setWatchlist([anime]);
     } else {
       const watchlistAnimes = [...watchlist, anime];
       setWatchlist(watchlistAnimes);
+      alert("Anime added to watchlist");
       saveToLocalStorage(watchlistAnimes);
     }
   };
-
-  // const addFavGif = (image, id) => {
-  //   const favsCopy = [...favGif];
-  //   const existingIds = favsCopy.map((favs) => favs.id);
-  //   if (!existingIds.includes(id)) {
-  //     favsCopy.push({ image: image, id: id });
-  //     localStorage.setItem("favs", JSON.stringify(favsCopy));
-  //     setFavGif(favsCopy);
-  //   } else {
-  //     const newFavs = favsCopy.filter((favs) => favs.id !== id);
-  //     localStorage.setItem("favs", JSON.stringify(newFavs));
-  //     setFavGif(newFavs);
-  //   }
-  // };
 
   return (
     <WatchlistContext.Provider
