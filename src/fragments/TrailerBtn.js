@@ -7,9 +7,10 @@ const TrailerBtn = styled.button`
   border: none;
   cursor: pointer;
   font-size: 25px;
-  height: 2rem;
+  /* height: 2rem; */
   margin: 1rem;
-  
+  padding: 0.5rem;
+  text-align: center;
   &:hover {
     background: #3d3c72;
     color: #ffbf00;

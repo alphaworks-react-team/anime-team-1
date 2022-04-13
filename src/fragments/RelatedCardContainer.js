@@ -6,5 +6,4 @@ export const RelatedCardContainer = styled.div`
   align-items: center;
   flex-flow: column;
   width: 100%;
-  height: 50%;
 `;

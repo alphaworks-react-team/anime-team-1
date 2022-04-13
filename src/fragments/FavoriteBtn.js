@@ -7,13 +7,12 @@ const FavoriteBtn = styled.button`
   border: none;
   cursor: pointer;
   font-size: 25px;
-  height: 2rem;
   margin: 1rem;
-  
+  padding: 0.5rem;
   &:hover {
     background: #3d3c72;
     color: #ffbf00;
   }
-`
+`;
 
-export default FavoriteBtn
+export default FavoriteBtn;
